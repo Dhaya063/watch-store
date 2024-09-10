@@ -110,5 +110,25 @@
 
     <!-- JavaScript File Link -->
     <script src="JS/script.js"></script>
+
+    <script>
+        // Add event listeners to product cards
+document.querySelectorAll('.product-card').forEach(card => {
+   card.addEventListener('click', function () {
+       const productName = card.dataset.name;
+       const productPrice = card.dataset.price;
+       const productImages = JSON.parse(card.dataset.images);
+       const productDescription = card.dataset.description;
+       const productDetail = card.dataset.detail;
+
+       // Store product data in local storage
+       localStorage.setItem('productName', productName);
+       localStorage.setItem('productDetail', productDetail);
+       localStorage.setItem('productPrice', productPrice);
+       localStorage.setItem('productImages', JSON.stringify(productImages));
+       localStorage.setItem('productDescription', productDescription);
+   });
+});
+   </script>
 </body>
 </html>
