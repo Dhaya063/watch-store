@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>About Us</title>
+    <meta name="description" content="About Us Page">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Tailwind CSS Link -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Font Awesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Optional: Custom CSS Link -->
+    <link rel="stylesheet" href="Tailwind/main.css">
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">My E-Commerce Store</h1>
+            <nav class="text-lg font-semibold flex items-center">
+                <a href="index.html" class="text-white hover:text-yellow-300 mx-4">Home</a>
+                <a href="products.html" class="text-white hover:text-yellow-300 mx-4">Products</a>
+                <a href="about.html" class="text-white hover:text-yellow-300 mx-4">About</a>
+                <a href="contact.html" class="text-white hover:text-yellow-300 mx-4">Contact</a>
+                <!-- Cart Icon with Notification -->
+                <a href="cart.html" class="relative mx-4">
+                    <i class="fas fa-shopping-cart text-white text-2xl"></i>
+                    <span id="cartCount" class="absolute top-0 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-blue-500 text-white py-24">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1600x900/?team');"></div>
+        <div class="relative container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-4">About Us</h2>
+            <p class="text-lg mb-8 px-24">We are a team of passionate individuals dedicated to providing the best products and services. Our mission is to make your shopping experience enjoyable and rewarding.</p>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-gray-200">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl font-bold mb-12">Meet Our Team</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img src="https://source.unsplash.com/160x160/?portrait" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h4 class="text-xl font-semibold mb-2">Jane Doe</h4>
+                    <p class="text-gray-600">Founder & CEO</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img src="https://source.unsplash.com/160x160/?portrait" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h4 class="text-xl font-semibold mb-2">John Smith</h4>
+                    <p class="text-gray-600">Lead Developer</p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img src="https://source.unsplash.com/160x160/?portrait" alt="Team Member" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h4 class="text-xl font-semibold mb-2">Emily Johnson</h4>
+                    <p class="text-gray-600">Marketing Specialist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 My E-Commerce Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript File Link -->
+    <script src="JS/script.js"></script>
+</body>
+</html>

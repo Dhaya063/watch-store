@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    overflow-y: auto; 
+    height: 100vh;
+}
+
+footer {
+    position: relative;
+}
+
+section{
+    border-radius: 20px;
+   margin: 30px 10px;
+}
+
+/* #contact-section{
+    background-color: beige;
+} */
+
+/* #address-section{
+    background-color: honeydew;
+    justify-content: left;
+    display: flex;
+} */
+
+/* #product-card img:hover{
+    transform: scale(1.09);
+    transition: all ease 0.3s;
+} */
