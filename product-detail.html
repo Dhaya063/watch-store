@@ -7,10 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Tailwind CSS Link -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-     <!-- Font Awesome CDN for Icons -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-     <!-- Optional: Custom CSS Link -->
-     <link rel="stylesheet" href="Tailwind/main.css">
+    <!-- Font Awesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="bg-white font-sans min-h-screen flex flex-col">
     <!-- Header -->
@@ -22,16 +20,10 @@
                 <a href="products.html" class="text-white hover:text-yellow-300 mx-4">Products</a>
                 <a href="about.html" class="text-white hover:text-yellow-300 mx-4">About</a>
                 <a href="contact.html" class="text-white hover:text-yellow-300 mx-4">Contact</a>
-                <!-- Cart Icon with Notification -->
-                <a href="cart.html" class="relative mx-4">
-                    <i class="fas fa-shopping-cart text-white text-2xl"></i>
-                    <span id="cartCount" class="absolute top-0 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
-                </a>
             </nav>
         </div>
     </header>
     
-
     <!-- Product Detail Section -->
     <section class="py-16 flex-grow">
         <div class="container mx-auto px-4">
@@ -48,8 +40,8 @@
                         <div class="carousel flex transition-transform duration-500 ease-in-out gap-5" style="width: 360%;" id="carousel">
                             <!-- Slides will be populated here -->
                         </div>
-                        <button class="absolute top-1/2 -translate-y-1/2 bg-black text-white border-none p-2 cursor-pointer z-10 rounded-full w-10 h-10 left-4 lg:left-8" id="prevButton">&lt;</button>
-                        <button class="absolute top-1/2 -translate-y-1/2 bg-black text-white border-none p-2 cursor-pointer z-10 rounded-full w-10 h-10 right-4 lg:right-8" id="nextButton">&gt;</button>
+                        <button class="absolute top-1/2 -translate-y-1/2 bg-black text-white border-none p-2 cursor-pointer z-10 rounded-full w-10 h-10 left-4 lg:left-8" id="prevButton"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button class="absolute top-1/2 -translate-y-1/2 bg-black text-white border-none p-2 cursor-pointer z-10 rounded-full w-10 h-10 right-4 lg:right-8" id="nextButton"><i class="fa-solid fa-chevron-right"></i></button>
                     </div>
                 </div>
                 <!-- Product Details -->
@@ -58,13 +50,12 @@
                     <h1 id="productDetail" class="text-2xl font-semibold mb-4">Product Detail</h1>
                     <p id="productPrice" class="text-xl font-semibold mb-4">Product Price</p>
                     <p id="productDescription" class="text-gray-700 mb-6">Product Description</p>
-                    <a href="cart.html" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-500 transition duration-300 ease-in-out">Add to cart</a>
+                    <a href="checkout.html" class="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-500 transition duration-300 ease-in-out">Buy Now</a>
                 </div>
             </div>
         </div>
     </section>
     
-
     <!-- Footer -->
     <footer class="bg-blue-600 text-white py-4">
         <div class="container mx-auto text-center">
@@ -72,8 +63,9 @@
         </div>
     </footer>
 
+    <!-- JavaScript File Link -->
+    <script src="JS/script.js"></script>
     
-     
     <!-- JavaScript to Populate Product Details and Carousel -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -83,7 +75,7 @@
             let currentIndex = 0;
 
             const productName = localStorage.getItem('productName');
-            const productDetail= localStorage.getItem('productDetail');
+            const productDetail = localStorage.getItem('productDetail');
             const productPrice = localStorage.getItem('productPrice');
             const productImages = JSON.parse(localStorage.getItem('productImages'));
             const productDescription = localStorage.getItem('productDescription');
@@ -120,7 +112,7 @@
                     updateCarousel();
                 }
             });
-
+            
             updateCarousel();
         });
     </script>

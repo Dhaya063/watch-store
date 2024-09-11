@@ -1,4 +1,4 @@
-// Success Message
+// Form Success Message
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent actual form submission
 
@@ -7,41 +7,8 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     document.getElementById('contactForm').reset(); // Optional: Clear the form fields
 });
 
-
-// product detail page
-
- // Add event listeners to product cards
-//  document.querySelectorAll('.product-card').forEach(card => {
-//     card.addEventListener('click', function () {
-//         const productName = card.dataset.name;
-//         const productPrice = card.dataset.price;
-//         const productImage = card.dataset.image;
-//         const productDescription = card.dataset.description;
-
-//         // Store product data in local storage
-//         localStorage.setItem('productName', productName);
-//         localStorage.setItem('productPrice', productPrice);
-//         localStorage.setItem('productImage', productImage);
-//         localStorage.setItem('productDescription', productDescription);
-//     });
-// });
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const productName = localStorage.getItem('productName');
-//     const productPrice = localStorage.getItem('productPrice');
-//     const productImage = localStorage.getItem('productImage');
-//     const productDescription = localStorage.getItem('productDescription');
-
-//     document.getElementById('productName').textContent = productName;
-//     document.getElementById('productPrice').textContent = productPrice;
-//     document.getElementById('productImage').src = productImage;
-//     document.getElementById('productDescription').textContent = productDescription;
-// });
-
-
- // Add event listeners to product cards
- document.querySelectorAll('.product-card').forEach(card => {
+// Product Detail Page - Storing Product Data
+document.querySelectorAll('.product-card').forEach(card => {
     card.addEventListener('click', function () {
         const productName = card.dataset.name;
         const productPrice = card.dataset.price;
@@ -55,22 +22,78 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         localStorage.setItem('productPrice', productPrice);
         localStorage.setItem('productImages', JSON.stringify(productImages));
         localStorage.setItem('productDescription', productDescription);
+
+        // Redirect to the product detail page
+        window.location.href = 'product-detail.html';
     });
 });
 
- // cart
- document.addEventListener('DOMContentLoaded', function() {
-    const cartCount = document.getElementById('cartCount');
-    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    cartCount.textContent = cartItems.length;
+// Product Detail Page - Displaying Product Data
+document.addEventListener('DOMContentLoaded', function() {
+    const productName = localStorage.getItem('productName');
+    const productDetail = localStorage.getItem('productDetail');
+    const productPrice = localStorage.getItem('productPrice');
+    const productImages = JSON.parse(localStorage.getItem('productImages'));
+    const productDescription = localStorage.getItem('productDescription');
+
+    if (productName) {
+        document.getElementById('productName').textContent = productName;
+        document.getElementById('productDetail').textContent = productDetail;
+        document.getElementById('productPrice').textContent = productPrice;
+        document.getElementById('productDescription').textContent = productDescription;
+
+        // Populate carousel with images
+        const carousel = document.getElementById('carousel');
+        productImages.forEach(image => {
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = 'Product Image';
+            img.classList.add('w-full', 'h-96', 'object-contain', 'rounded-md');
+            carousel.appendChild(img);
+        });
+        
+        // Carousel navigation
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const slideWidth = carousel.children[0].offsetWidth;
+            carousel.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        }
+
+        prevButton.addEventListener('click', function() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            }
+        });
+
+        nextButton.addEventListener('click', function() {
+            if (currentIndex < carousel.children.length - 1) {
+                currentIndex++;
+                updateCarousel();
+            }
+        });
+
+        updateCarousel();
+    }
+
+    // Update cart notification count
+    function updateCartNotification() {
+        const cart = JSON.parse(localStorage.getItem('cartItems')) || [];
+        document.getElementById('cartCount').textContent = cart.length;
+    }
+
+    updateCartNotification();
 });
 
-
+// Cart Page - Displaying Cart Items
 document.addEventListener('DOMContentLoaded', function() {
     const cartItemsContainer = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    
+
     if (cartItems.length === 0) {
         cartItemsContainer.innerHTML = '<p class="text-center text-gray-600">Your cart is empty.</p>';
     } else {
@@ -92,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     window.removeItem = function(index) {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         cartItems.splice(index, 1);
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
         location.reload(); // Reload the page to update the cart
