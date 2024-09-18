@@ -23,17 +23,27 @@
         <!-- <div class="flex items-center">
             <img class="h-20 w-auto" src="assets/logo/Minute-Masters-Logo.png" alt="Minute Masters Logo">
         </div> -->
-            <nav class="text-lg font-semibold flex items-center">
-                <a href="index.html" class="text-white hover:text-yellow-300 mx-4">Home</a>
-                <a href="products.html" class="text-white hover:text-yellow-300 mx-4">Products</a>
-                <a href="about.html" class="text-white hover:text-yellow-300 mx-4">About</a>
-                <a href="contact.html" class="text-white hover:text-yellow-300 mx-4">Contact</a>
-                <!-- Cart Icon with Notification -->
-                <!-- <a href="cart.html" class="relative mx-4">
-                    <i class="fas fa-shopping-cart text-white text-2xl"></i>
-                    <span id="cartCount" class="absolute top-0 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">0</span>
-                </a> -->
-            </nav>
+         <!-- Burger Menu Icon -->
+         <div class="block md:hidden">
+            <button id="menuToggle" class="text-white text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="md:flex text-lg font-semibold items-center hidden">
+            <a href="index.html" class="text-white hover:text-yellow-300 mx-4 bg-gray-800 px-2 py-1 rounded-lg">Home</a>
+            <a href="products.html" class="text-white hover:text-yellow-300 mx-4">Products</a>
+            <a href="about.html" class="text-white hover:text-yellow-300 mx-4">About</a>
+            <a href="contact.html" class="text-white hover:text-yellow-300 mx-4">Contact</a>
+        </nav>
+        
+        <!-- Hidden Menu for Mobile -->
+        <div id="mobileMenu" class="absolute text-lg font-semibold top-16 left-0 right-0 bg-blue-600 text-white shadow-lg z-10 w-auto h-full md:hidden hidden pl-10">
+            <a href="index.html" class="block px-4 py-2 my-2 hover:text-yellow-300 bg-gray-800 rounded-lg w-11/12">Home</a>
+            <a href="products.html" class="block px-4 py-2 my-2 hover:text-yellow-300">Products</a>
+            <a href="about.html" class="block px-4 py-2 my-2 hover:text-yellow-300">About</a>
+            <a href="contact.html" class="block px-4 py-2 my-2 hover:text-yellow-300">Contact</a>
+        </div>
+        
         </div>
     </header>
 
@@ -203,6 +213,23 @@ document.querySelectorAll('.product-card').forEach(card => {
        localStorage.setItem('productDescription', productDescription);
    });
 });
+
+document.getElementById('menuToggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const icon = this.querySelector('i');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                mobileMenu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        
    </script>
 </body>
 </html>
